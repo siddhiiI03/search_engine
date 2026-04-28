@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Search Results</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='results.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="top-nav">
+<a href="/">Home</a>
+</div>
+
+<div class="results-container">
+
+<h2>🔍 Search Results</h2>
+
+<form action="/search" method="POST" class="search-again">
+<input type="text" name="query" placeholder="Search again..." required>
+<button type="submit">Search</button>
+</form>
+
+{% if results %}
+
+{% for file, score in results %}
+
+<div class="result-card">
+
+<h3>
+    <a href="{{ url_for('view_file', filename=file) }}?source=search">
+        📄 {{ file }}
+    </a>
+</h3>
+
+</div>
+
+{% endfor %}
+
+{% else %}
+
+<p class="no-result">No matching documents found.</p>
+
+{% endif %}
+
+<div class="bottom-back">
+<a href="{{ url_for('upload') }}">
+    ← Back
+</a>
+</div>
+
+<a href="{{ url_for('export_pdf') }}">
+    <button>Export as PDF</button>
+</a>
+
+</div>
+
+</body>
+</html>

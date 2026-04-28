@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Findr</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="glow"></div>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<div class="logo">Findr</div>
+
+<div class="nav-links">
+
+<a href="{{ url_for('about') }}">About</a>
+
+<a href="{{ url_for('guest') }}" class="guest">Guest Mode</a>
+
+<a href="{{ url_for('login') }}" class="login">Login</a>
+
+<a href="{{ url_for('signup') }}" class="signup">Sign Up</a>
+
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h1>Welcome to Findr</h1>
+
+<p>Upload project files and search within them easily.</p>
+
+</section>
+
+
+</body>
+</html>

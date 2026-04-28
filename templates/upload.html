@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Upload Files</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='upload.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="glow"></div>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="left-nav">
+        <div class="logo">Findr</div>
+    </div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+
+        {% if session.get("mode") %}
+            <a href="/profile" class="profile-icon">
+                👤
+            </a>
+        {% else %}
+            <a href="/login">Login</a>
+        {% endif %}
+    </div>
+
+</nav>
+
+
+<!-- SIDEBAR ARROW -->
+
+<button class="edge-arrow" onclick="toggleSidebar()">❯</button>
+
+
+<!-- SIDEBAR -->
+
+<div id="sidebar" class="sidebar">
+
+    <h3>Folders</h3>
+
+<div class="folder-item" onclick="window.location.href=`{{ url_for('reset_folder') }}`">
+    🏠 Root Files
+</div>
+
+{% for folder in folders %}
+<div class="folder-item" onclick="window.location.href=`{{ url_for('open_folder', foldername=folder) }}`">
+    📁 {{ folder }}
+</div>
+{% endfor %}
+
+    <button class="create-folder-btn" onclick="createFolder()">
+        + Create Folder
+    </button>
+
+</div>
+
+
+<!-- MAIN UPLOAD CARD -->
+
+<div class="upload-container">
+
+    <div class="upload-card">
+
+        {% if current_folder is defined and current_folder %}
+            <p class="subtitle">Current Folder: {{ current_folder }}</p>
+        {% endif %}
+
+        <h1>Upload Your Text Files</h1>
+
+        <p class="subtitle">Select project documents to store and index.</p>
+
+        <form method="POST" action="{{ url_for('upload') }}" enctype="multipart/form-data">
+
+            <input type="file" name="files" multiple required>
+
+            <button type="submit">Upload File</button>
+
+        </form>
+
+        <h3 class="files-title">Uploaded Files</h3>
+
+        <div class="files-list">
+
+            {% for file in files %}
+            <div class="file-item">
+
+                <a href="{{ url_for('view_file', filename=file) }}?source=upload" class="file-name">
+                    📄 {{ file }}
+                </a>
+
+                <form action="{{ url_for('delete_file', filename=file) }}" method="POST" style="display:inline;">
+                    <button class="delete-btn" onclick="return confirm('Delete file?')">
+                        Delete
+                    </button>
+                </form>
+
+            </div>
+            {% endfor %}
+
+        </div>
+
+        <a href="{{ url_for('search_page') }}" class="search-btn">
+            Search Documents
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- GUEST POPUP -->
+
+{% if session.get("mode") == "guest" %}
+<div id="guestPopup" class="popup-overlay">
+    <div class="popup-box">
+
+        <h3>Guest Mode Notice</h3>
+
+        <p>
+            You are currently using Guest Mode. This provides temporary access only, and all uploaded files will be automatically removed when logout. To permanently save and manage your files, please sign up or log in.
+        </p>
+
+        <button onclick="closePopup()">OK</button>
+
+    </div>
+</div>
+{% endif %}
+
+
+<!-- CREATE FOLDER POPUP -->
+
+<div id="folderPopup" class="popup-overlay" style="display:none;">
+
+    <div class="popup-box">
+
+        <h3>Create Folder</h3>
+
+        <input type="text" id="folderName" placeholder="Enter folder name">
+
+        <div class="popup-actions">
+            <button onclick="submitFolder()">Create</button>
+            <button onclick="closeFolderPopup()">Cancel</button>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+function closePopup() {
+    let popup = document.getElementById("guestPopup");
+    if (popup) {
+        popup.style.display = "none";
+    }
+}
+
+function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("active");
+}
+
+function createFolder() {
+    document.getElementById("folderPopup").style.display = "flex";
+}
+
+function closeFolderPopup() {
+    document.getElementById("folderPopup").style.display = "none";
+}
+
+function submitFolder() {
+
+    let folderName = document.getElementById("folderName").value;
+
+    if (folderName.trim() !== "") {
+        window.location.href = "/create_folder/" + folderName;
+    }
+
+}
+
+</script>
+
+</body>
+</html>

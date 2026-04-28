@@ -1,0 +1,7 @@
+.vscode/
+uploads/
+users.db
+inverted_index.json
+__pycache__/
+*.pyc
+static/search_results.pdf

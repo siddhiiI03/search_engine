@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Guest Mode - Findr</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='guest.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="glow"></div>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<div class="logo">Findr</div>
+
+<div class="nav-links">
+
+<span class="mode">
+    {{ session.get("username") }} (Guest)
+</span>
+
+<a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+
+</div>
+
+</nav>
+
+
+<!-- MAIN CARD -->
+
+<div class="guest-container">
+
+<div class="guest-card">
+
+<h1>Web-Based Mini Search Engine</h1>
+
+<p class="subtitle">
+Upload project files and search inside them easily.
+</p>
+
+<div class="buttons">
+
+<a href="{{ url_for('upload') }}" class="action-btn">
+Upload Files
+</a>
+
+<a href="{{ url_for('search_page') }}" class="action-btn">
+Search Documents
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+{% if show_alert %}
+<script>
+alert("You are currently using Guest Mode. This provides temporary access only, and all uploaded files will be automatically removed when the session ends. To permanently save and manage your files, please sign up or log in.");
+</script>
+{% endif %}
+</body>
+</html>

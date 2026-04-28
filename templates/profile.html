@@ -1,0 +1,111 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<title>Profile</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>👤 Profile</h1>
+
+    <div class="card">
+        <h3>👤 {{ user }}</h3>
+        <p class="email">📧 {{ email }}</p>
+    </div>
+
+    <h2>Your Files</h2>
+
+    <div class="files">
+
+        {% if files %}
+        {% for file in files %}
+        <a href="{{ url_for('view_file', filename=file) }}?source=profile" class="file-item">
+            📄 {{ file }}
+        </a>
+        {% endfor %}
+        {% else %}
+        <p>📭 No files uploaded yet.</p>
+        {% endif %}
+        
+        </div>
+
+    <a href="{{ url_for('upload') }}" class="btn">⬅ Back </a>
+
+    <br><br>
+
+    <a href="{{ url_for('logout') }}" class="logout-btn">
+        🚪 Logout
+    </a>
+
+</div>
+
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Profile</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="glow"></div>
+
+<div class="profile-container">
+
+    <div class="profile-card">
+
+        <!-- <div class="profile-icon">👤</div> -->
+         <div class="profile-icon">🧑</div>
+
+        <h1>{{ user }}</h1>
+
+        <p class="email">{{ email }}</p>
+
+        <div class="info-box">
+
+            <div class="info-item">
+                <span class="label">Account Type</span>
+                <span class="value">
+                    {% if session.get("mode") == "guest" %}
+                        Guest User
+                    {% else %}
+                        Registered User
+                    {% endif %}
+                </span>
+            </div>
+
+            <div class="info-item">
+                <span class="label">Folders</span>
+                <span class="value">{{ folders|length }}</span>
+            </div>
+
+        </div>
+
+        <div class="button-group">
+
+            <a href="{{ url_for('upload') }}" class="btn back-btn">Back</a>
+
+            <a href="{{ url_for('logout') }}" class="btn logout-btn">Logout</a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

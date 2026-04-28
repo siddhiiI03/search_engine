@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>About - Findr</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- background glow -->
+
+<div class="glow"></div>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<div class="logo">Findr</div>
+
+<div class="nav-links">
+
+<a href="{{ url_for('home') }}">Home</a>
+
+<a href="{{ url_for('login') }}">Login</a>
+
+<a href="{{ url_for('signup') }}" class="signup">Sign Up</a>
+
+</div>
+
+</nav>
+
+
+<!-- ABOUT CARD -->
+
+<div class="about-card">
+
+<h1>About This Project</h1>
+
+<h3>Think Google, but just for your files.</h3>
+
+<p>
+This project is a web-based mini search engine that allows users
+to upload text files and search inside them using keywords.
+</p>
+
+<p>
+Instead of manually opening multiple documents, users can simply
+type a word and quickly find the most relevant file.
+</p>
+
+<p>
+The system is based on an
+<span class="highlight">inverted index</span>
+for fast retrieval and a
+<span class="highlight">ranking mechanism</span>
+to show the most useful results first.
+</p>
+
+<div class="footer-text">
+Smart Search. Less Stress. More Productivity.
+</div>
+
+</div>
+
+
+</body>
+</html>

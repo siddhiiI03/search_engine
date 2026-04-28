@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Search Documents</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='search.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="glow"></div>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<div class="logo">Findr</div>
+
+<div class="nav-links">
+<a href="/">Home</a>
+<a href="/about">About</a>
+
+{% if session.get("mode") %}
+
+    <span>
+        {% if session.get("mode") == "guest" %}
+            {{ session.get("username") }} (Guest)
+        {% else %}
+            {{ session.get("username") }}
+        {% endif %}
+    </span>
+
+    <a href="{{ url_for('logout') }}">Logout</a>
+
+{% else %}
+
+    <a href="/login">Login</a>
+
+{% endif %}
+
+</div>
+
+</nav>
+
+
+<!-- SEARCH CARD -->
+
+<div class="search-container">
+
+<div class="search-card">
+
+<h1>Search Documents</h1>
+
+<p class="subtitle">Enter a keyword or phrase to find relevant files.</p>
+
+
+<form method="POST" action="/search" class="search-form">
+
+<input 
+type="text" 
+name="query" 
+placeholder="Enter keyword..." 
+required
+>
+
+<button type="submit">🔍 Search</button>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+</html>

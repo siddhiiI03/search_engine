@@ -2,9 +2,30 @@
 <html>
 <head>
     <title>Mini Search Engine</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <h1>Search Engine</h1>
-    <p>Project Files Search System</p>
+
+<div class="container">
+
+    <div class="top-nav">
+        <span style="margin-right:10px;">Guest Mode</span>
+        <a href="{{ url_for('home') }}" class="nav-link">Logout</a>
+    </div>
+
+    <!-- Main Content -->
+    <h1>Web-Based Mini Search Engine</h1>
+    <p>Upload project files and search inside them easily.</p>
+
+    <a href="{{ url_for('upload') }}">
+        <button>Upload Files</button>
+    </a>
+
+    <a href="{{ url_for('search_page') }}">
+        <button>Search Documents</button>
+    </a>
+
+</div>
+
 </body>
 </html>

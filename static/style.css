@@ -1,0 +1,230 @@
+body{
+
+margin:0;
+font-family:'Poppins',sans-serif;
+background:#FFF5F4;
+color:#6b7280;
+overflow:hidden;
+
+}
+
+
+/* Glow background */
+
+.glow{
+
+position:absolute;
+top:50%;
+left:50%;
+
+transform:translate(-50%,-50%);
+
+width:600px;
+height:400px;
+
+background:#FF8A71;
+
+opacity:0.15;
+
+filter:blur(120px);
+
+border-radius:50%;
+
+}
+
+
+/* NAVBAR */
+
+.navbar{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:30px 80px;
+
+position:relative;
+z-index:2;
+
+}
+
+.logo{
+
+font-size:32px;
+font-weight:700;
+color:#FF8A71;
+
+}
+
+.nav-links{
+
+display:flex;
+align-items:center;
+gap:25px;
+
+}
+
+.nav-links a{
+
+text-decoration:none;
+color:#6b7280;
+font-weight:500;
+
+}
+
+.guest{
+
+padding:8px 16px;
+border:1px solid #ffd3cc;
+border-radius:10px;
+background:white;
+
+}
+
+.login{
+
+color:#FF8A71;
+font-weight:600;
+
+}
+
+.signup{
+
+background:#FF8A71;
+color:white;
+padding:8px 20px;
+border-radius:10px;
+
+}
+
+
+/* HERO */
+
+.hero{
+
+text-align:center;
+margin-top:120px;
+
+}
+
+.hero h1{
+
+font-size:50px;
+color:#FF8A71;
+margin-bottom:20px;
+
+}
+
+.hero p{
+
+font-size:18px;
+color:#9ca3af;
+margin-bottom:70px;
+
+}
+
+
+/* ACTION BUTTONS */
+
+.actions{
+
+display:flex;
+justify-content:center;
+align-items:center;
+gap:40px;
+
+}
+
+
+/* Upload Button */
+
+.upload-btn{
+
+display:flex;
+align-items:center;
+gap:15px;
+
+background:#FF8A71;
+color:white;
+
+padding:20px 40px;
+
+border-radius:20px;
+
+font-size:22px;
+font-weight:600;
+
+text-decoration:none;
+
+box-shadow:0 15px 40px rgba(255,138,113,0.4);
+
+transition:0.3s;
+
+}
+
+.upload-btn:hover{
+transform: translateY(-3px);
+box-shadow:0 20px 40px rgba(255,138,113,0.35);
+}
+
+.icon{
+
+background:rgba(255,255,255,0.2);
+padding:10px;
+border-radius:12px;
+
+}
+
+.icon img{
+
+width:24px;
+
+}
+
+
+/* Search box */
+
+.search-box{
+
+display:flex;
+align-items:center;
+gap:15px;
+
+background:white;
+
+padding:20px 30px;
+
+border-radius:20px;
+
+width:400px;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+text-decoration:none;
+
+}
+
+.search-box img{
+
+width:26px;
+
+}
+
+.search-box input{
+
+border:none;
+outline:none;
+font-size:20px;
+width:100%;
+background:transparent;
+
+
+}
+.search-btn{
+background:#FF8A71;
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:10px;
+cursor:pointer;
+font-weight:600;
+}
