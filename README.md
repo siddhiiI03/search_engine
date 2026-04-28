@@ -44,4 +44,5 @@ It allows users to upload text and PDF files, organize them into folders, and se
 ## Authors
 
 * Siddhika Agarwal
-* Team Member Name
+* Khushboo Mittal
+  
